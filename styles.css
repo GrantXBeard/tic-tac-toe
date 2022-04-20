@@ -58,14 +58,15 @@ h1 {
 .box {
   border: 1px solid #000;
   border-radius: none;
-  border-style: solid;
+  border-style: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 100ms;
+  transition: 150ms;
 }
 
 .box:hover {
-  transform: scale(0.5);
+  transform: scale(1.1);
   background: linear-gradient(#fff, #000);
+  border-style: none;
 }
