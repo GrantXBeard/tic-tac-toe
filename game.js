@@ -4,7 +4,7 @@ class Game {
     this.player2 = player2;
     this.currentPlayer;
     this.winner;
-    this.gameBoard = [null, null, null, null, null, null, null, null, null];
+    this.gameSquares = [null, null, null, null, null, null, null, null, null];
     this.winningSequence = [
       [0, 1, 2],
       [3, 4, 5],
