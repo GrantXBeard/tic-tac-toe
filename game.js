@@ -4,6 +4,7 @@ class Game {
     this.player2 = player2;
     this.currentPlayer;
     this.winner;
+    this.status;
     this.gameSquares = [null, null, null, null, null, null, null, null, null];
     this.winningSequence = [
       ["0", "1", "2"],
@@ -34,11 +35,11 @@ class Game {
       this.gameSquares[boardIndex] = player.token;
       domBoard.children[boardIndex].innerHTML = player.token;
       this.checkForWin();
-      this.changePlayer();
+      // this.changePlayer();
     }
   }
 
-  firstTurn() {
+  decideFirstTurn() {
     var players = [this.player1, this.player2];
     var randomIndex = Math.floor(Math.random() * players.length);
     this.currentPlayer = players[randomIndex];
@@ -53,18 +54,19 @@ class Game {
         gameBoard[sequence[i][0]] === player &&
         gameBoard[sequence[i][1]] === player &&
         gameBoard[sequence[i][2]] === player;
-
       if (winCondition) {
-        console.log("win");
-        console.log(this.currentPlayer);
-        return "win";
+        this.currentPlayer.increaseWins();
+        this.winner = this.currentPlayer;
+        this.status = "win";
       } else if (!gameBoard.includes(null) && winCondition === false) {
-        console.log("draw");
-        return "draw";
+        this.status = "draw";
       }
-      console.log(winCondition);
     }
   }
 
-  resetGame() {}
+  resetBoard() {
+    this.status = undefined;
+    this.winner = undefined;
+    this.gameSquares = [null, null, null, null, null, null, null, null, null];
+  }
 }
