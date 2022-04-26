@@ -1,12 +1,15 @@
 var currentPlayer = document.querySelector("h1");
 var spaces = document.querySelectorAll(".box");
+var boxes = document.querySelectorAll("[id=box]");
 var domBoard = document.querySelector(".game-grid");
+var player1Display = document.querySelector(".player-one");
+var player2Display = document.querySelector(".player-two");
 
 window.onLoad = startGame();
 
 function startGame() {
   createNewGame();
-  updatePlayerTurn(game.currentPlayer.name);
+  updateMessage(`It's now ${game.currentPlayer.name}'s turn`);
 }
 
 function createNewGame() {
@@ -15,7 +18,7 @@ function createNewGame() {
   var player1 = createNewPlayer("player1", "X", x);
   var player2 = createNewPlayer("player2", "O", o);
   game = new Game(player1, player2);
-  game.firstTurn();
+  game.decideFirstTurn();
   claimSpace(game);
 }
 
@@ -23,10 +26,36 @@ function claimSpace(game) {
   for (let i = 0; i < spaces.length; i++) {
     spaces[i].addEventListener("click", function () {
       game.makeMove(i, game.currentPlayer, domBoard);
-      updatePlayerTurn(game.currentPlayer.name);
-      game.currentPlayer.makeChoice(event.target.id);
+      game.changePlayer();
+      updateMessage(`It's now ${game.currentPlayer.name}'s turn`);
+      checkGameStatus(game);
     });
   }
+}
+
+function checkGameStatus(game) {
+  var status = game.status;
+  if (status === "win") {
+    winGame();
+  } else if (status === "draw") {
+    tieGame();
+  }
+}
+
+function winGame() {
+  updateScores();
+  updateMessage(`${game.winner.name} wins!`);
+  timeOut();
+}
+
+function tieGame() {
+  updateMessage(`It's a draw!`);
+  timeOut();
+}
+
+function updateScores() {
+  player1Display.innerText = `${game.player1.wins} wins`;
+  player2Display.innerText = `${game.player2.wins} wins`;
 }
 
 function createNewPlayer(id, name, token) {
@@ -34,10 +63,10 @@ function createNewPlayer(id, name, token) {
   return newPlayer;
 }
 
-function updatePlayerTurn(player) {
-  currentPlayer.innerText = `It's now ${player}'s turn`;
+function updateMessage(message) {
+  currentPlayer.innerText = message;
 }
 
-function displayMessage() {
-  setTimeOut;
+function timeOut() {
+  window.setTimeout(game.resetBoard, 2000);
 }
