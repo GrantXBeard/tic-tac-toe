@@ -1,7 +1,5 @@
 var currentPlayer = document.querySelector("h1");
 var domBoard = document.querySelector(".game-grid");
-var player1Display = document.querySelector(".player-one");
-var player2Display = document.querySelector(".player-two");
 
 window.onLoad = startGame();
 
@@ -59,6 +57,8 @@ function tieGame() {
 }
 
 function updateScores() {
+  var player1Display = document.querySelector(".player-one");
+  var player2Display = document.querySelector(".player-two");
   player1Display.innerText = `${game.player1.wins} wins`;
   player2Display.innerText = `${game.player2.wins} wins`;
 }
