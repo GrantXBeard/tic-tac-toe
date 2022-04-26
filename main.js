@@ -37,3 +37,7 @@ function createNewPlayer(id, name, token) {
 function updatePlayerTurn(player) {
   currentPlayer.innerText = `It's now ${player}'s turn`;
 }
+
+function displayMessage() {
+  setTimeOut;
+}

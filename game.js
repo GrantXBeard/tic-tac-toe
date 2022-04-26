@@ -49,21 +49,20 @@ class Game {
     var gameBoard = this.gameSquares;
     var sequence = this.winningSequence;
     for (var i = 0; i < sequence.length; i++) {
-      // if (
-      //   player.includes(sequence[i][0]) &&
-      //   player.includes(sequence[i][1]) &&
-      //   player.includes(sequence[i][2])
-      // )
-      if (
+      var winCondition =
         gameBoard[sequence[i][0]] === player &&
         gameBoard[sequence[i][1]] === player &&
-        gameBoard[sequence[i][2]] === player
-      )
+        gameBoard[sequence[i][2]] === player;
+
+      if (winCondition) {
         console.log("win");
-      else if (!gameBoard.includes(null)) {
+        console.log(this.currentPlayer);
+        return "win";
+      } else if (!gameBoard.includes(null) && winCondition === false) {
         console.log("draw");
         return "draw";
       }
+      console.log(winCondition);
     }
   }
 
