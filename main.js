@@ -1,6 +1,4 @@
 var currentPlayer = document.querySelector("h1");
-var spaces = document.querySelectorAll(".box");
-var boxes = document.querySelectorAll("[id=box]");
 var domBoard = document.querySelector(".game-grid");
 var player1Display = document.querySelector(".player-one");
 var player2Display = document.querySelector(".player-two");
@@ -23,14 +21,21 @@ function createNewGame() {
 }
 
 function claimSpace(game) {
+  var spaces = document.querySelectorAll(".box");
+  console.log(spaces);
   for (let i = 0; i < spaces.length; i++) {
     spaces[i].addEventListener("click", function () {
-      game.makeMove(i, game.currentPlayer, domBoard);
+      game.makeMove(i, game.currentPlayer);
+      showToken(i, game.currentPlayer, domBoard);
       game.changePlayer();
       updateMessage(`It's now ${game.currentPlayer.name}'s turn`);
       checkGameStatus(game);
     });
   }
+}
+
+function showToken(boardIndex, player, domBoard) {
+  domBoard.children[boardIndex].innerHTML = player.token;
 }
 
 function checkGameStatus(game) {
@@ -67,6 +72,28 @@ function updateMessage(message) {
   currentPlayer.innerText = message;
 }
 
+function reset() {
+  game.resetBoard();
+  updateDomBoard();
+  game.decideFirstTurn();
+  updateMessage(`It's now ${game.currentPlayer.name}'s turn`);
+  claimSpace(game);
+}
+
+function updateDomBoard() {
+  domBoard.innerHTML = `<div class="box" id="box"></div>
+  <div class="box" id="box"></div>
+  <div class="box" id="box"></div>
+  <div class="box" id="box"></div>
+  <div class="box" id="box"></div>
+  <div class="box" id="box"></div>
+  <div class="box" id="box"></div>
+  <div class="box" id="box"></div>
+  <div class="box" id="box"></div>`;
+}
+
 function timeOut() {
-  window.setTimeout(game.resetBoard, 2000);
+  setTimeout(function () {
+    reset();
+  }, 2000);
 }

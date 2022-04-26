@@ -30,12 +30,10 @@ class Game {
     this.gameSquares[index] = this.currentPlayer.token;
   }
 
-  makeMove(boardIndex, player, domBoard) {
+  makeMove(boardIndex, player) {
     if (!this.gameSquares[boardIndex]) {
       this.gameSquares[boardIndex] = player.token;
-      domBoard.children[boardIndex].innerHTML = player.token;
       this.checkForWin();
-      // this.changePlayer();
     }
   }
 
