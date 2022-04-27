@@ -27,7 +27,7 @@ class Game {
   }
 
   makeMove(boardIndex, player) {
-    if (this.gameSquares[boardIndex] === null) {
+    if (!this.gameSquares[boardIndex]) {
       this.gameSquares[boardIndex] = player.token;
       this.checkForWin();
     }
