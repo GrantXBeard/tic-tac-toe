@@ -10,6 +10,10 @@ A fully playable TicTacToe game!
 - HTML
 - CSS
 
+## Deployed Page
+
+Visit our published TicTacToe page [here](https://grantxbeard.github.io/tic-tac-toe/)
+
 ## Set Up
 
 1. Fork this repo
