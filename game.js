@@ -26,12 +26,8 @@ class Game {
     }
   }
 
-  updateBoard(index) {
-    this.gameSquares[index] = this.currentPlayer.token;
-  }
-
   makeMove(boardIndex, player) {
-    if (!this.gameSquares[boardIndex]) {
+    if (this.gameSquares[boardIndex] === null) {
       this.gameSquares[boardIndex] = player.token;
       this.checkForWin();
     }
