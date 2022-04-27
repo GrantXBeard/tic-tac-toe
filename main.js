@@ -23,11 +23,13 @@ function claimSpace(game) {
   console.log(spaces);
   for (let i = 0; i < spaces.length; i++) {
     spaces[i].addEventListener("click", function () {
-      game.makeMove(i, game.currentPlayer);
-      showToken(i, game.currentPlayer, domBoard);
-      game.changePlayer();
-      updateMessage(`It's now ${game.currentPlayer.name}'s turn`);
-      checkGameStatus(game);
+      if (!game.gameSquares[i]) {
+        game.makeMove(i, game.currentPlayer);
+        showToken(i, game.currentPlayer, domBoard);
+        game.changePlayer();
+        updateMessage(`It's now ${game.currentPlayer.name}'s turn`);
+        checkGameStatus(game);
+      }
     });
   }
 }

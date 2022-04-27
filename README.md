@@ -4,6 +4,13 @@
 
 A fully playable TicTacToe game!
 
+## Goals
+
+- Write clean/DRY Javascript
+- Understanding the difference between the data model and the DOM and keeping them separate
+- Iterate through DOM elements using for loops
+- Using problem solving to break down large problems and logical challenges
+
 ## Technologies
 
 - Javascript
@@ -28,6 +35,12 @@ Visit our published TicTacToe page [here](https://grantxbeard.github.io/tic-tac-
 ## Project Specs
 
 - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/tic-tac-toe-solo-v2.html)
+
+## Challenges/wins
+
+Wins: Some bigger wins for me in this project were successfully keeping the DOM and data model separate and utilizing SRP
+
+Challenges: The logic for checking winning conditions was especially challenging
 
 ## Future Iterations
 

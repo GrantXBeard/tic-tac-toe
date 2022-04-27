@@ -26,10 +26,6 @@ class Game {
     }
   }
 
-  updateBoard(index) {
-    this.gameSquares[index] = this.currentPlayer.token;
-  }
-
   makeMove(boardIndex, player) {
     if (!this.gameSquares[boardIndex]) {
       this.gameSquares[boardIndex] = player.token;
